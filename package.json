@@ -1,0 +1,31 @@
+{
+  "name": "json-rules-engine-to-json-logic",
+  "version": "1.0.0",
+  "description": "A minimal Typescript library for converting a json-rules-engine condition to a JsonLogic rule specification.",
+  "main": "src/index.ts",
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexberriman/json-rules-engine-to-json-logic.git"
+  },
+  "keywords": [
+    "json-rules-engine",
+    "json-logic",
+    "json-logic-js"
+  ],
+  "author": "Alex Berriman <alexb@bezz.com.au>",
+  "license": "MIT",
+  "sideEffects": false,
+  "bugs": {
+    "url": "https://github.com/alexberriman/json-rules-engine-to-json-logic/issues"
+  },
+  "homepage": "https://github.com/alexberriman/json-rules-engine-to-json-logic",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1"
+  }
+}
