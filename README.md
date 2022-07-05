@@ -1,12 +1,12 @@
 <h1 align="center">
   <br>
   <a href="https://github.com/alexberriman/json-rules-engine-to-json-logic"><img src="./logo.svg" alt="json-rules-engine-to-json-logic" height="200"></a>
-  <br>
+  <br><br>
   json-rules-engine-to-json-logic
   <br>
 </h1>
 
-<h4 align="center">A minimal Typescript library for converting a <a href="https://github.com/CacheControl/json-rules-engine" target="_blank">json-rules-engine</a> condition to a <a href="https://github.com/jwadhams/json-logic-js/">JsonLogic</a> rule specification.</h4>
+<h4 align="center">A minimal Typescript library for converting a <a href="https://github.com/CacheControl/json-rules-engine" target="_blank">json-rules-engine</a> condition to a <a href="https://github.com/jwadhams/json-logic-js/">JsonLogic</a> rule specification (and vice versa).</h4>
 
 <p align="center">
   <a href="#why">Why?</a> •
@@ -17,6 +17,8 @@
   <a href="#see-also">See Also</a> •
   <a href="#license">License</a>
 </p>
+
+> :warning: **This package is under active development**: Compatibility and APIs may change.
 
 ## Why?
 
