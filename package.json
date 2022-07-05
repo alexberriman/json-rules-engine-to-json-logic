@@ -4,8 +4,12 @@
   "description": "A minimal Typescript library for converting a json-rules-engine condition to a JsonLogic rule specification.",
   "main": "src/index.ts",
   "scripts": {
+    "lint": "eslint src/",
     "prepare": "husky install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src/"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "repository": {
     "type": "git",
@@ -24,8 +28,21 @@
   },
   "homepage": "https://github.com/alexberriman/json-rules-engine-to-json-logic",
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "husky": "^8.0.1"
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@tsconfig/node16": "^1.0.0",
+    "@types/jest": "^28.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.5.0",
+    "eslint-plugin-prettier": "^4.2.0",
+    "husky": "^8.0.0",
+    "jest": "^28.0.0",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.7.0",
+    "ts-jest": "^28.0.0",
+    "typescript": "^4.7.0"
   }
 }
