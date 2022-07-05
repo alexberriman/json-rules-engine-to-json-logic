@@ -1,8 +1,10 @@
-<center><img src="./logo.svg" alt="json-rules-engine-to-json-logic" height="200" /></center>
-
-<br />
-
-<h1 align="center">json-rules-engine-to-json-logic</h1>
+<h1 align="center">
+  <br>
+  <a href="https://github.com/alexberriman/json-rules-engine-to-json-logic"><img src="./logo.svg" alt="json-rules-engine-to-json-logic" height="200"></a>
+  <br>
+  json-rules-engine-to-json-logic
+  <br>
+</h1>
 
 <h4 align="center">A minimal Typescript library for converting a <a href="https://github.com/CacheControl/json-rules-engine" target="_blank">json-rules-engine</a> condition to a <a href="https://github.com/jwadhams/json-logic-js/">JsonLogic</a> rule specification.</h4>
 
