@@ -1,5 +1,5 @@
 export class CompatibilityError extends Error {
-  constructor(message: string, private data: Record<string, unknown> = {}) {
+  constructor(message: string) {
     super(message);
     this.name = "CompatibilityError";
 

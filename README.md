@@ -10,11 +10,19 @@
 
 <h4 align="center">A minimal Typescript library for converting a <a href="https://github.com/CacheControl/json-rules-engine" target="_blank">json-rules-engine</a> condition to a <a href="https://github.com/jwadhams/json-logic-js/">JsonLogic</a> rule specification.</h4>
 
+<div align="center">
+
+[![Build status](https://github.com/alexberriman/json-rules-engine-to-json-logic/actions/workflows/build.yml/badge.svg)](https://github.com/alexberriman/json-rules-engine-to-json-logic/actions) [![Version](https://img.shields.io/npm/v/json-rules-engine-to-json-logic?label=version)](https://www.npmjs.com/package/json-rules-engine-to-json-logic/) [![Minzipped Size](https://img.shields.io/bundlephobia/minzip/json-rules-engine-to-json-logic)](https://www.npmjs.com/package/json-rules-engine-to-json-logic/) [![License](https://img.shields.io/npm/l/json-rules-engine-to-json-logic)](https://github.com/alexberriman/json-rules-engine-to-json-logic/blob/main/LICENSE)
+
+[![twitter](https://img.shields.io/badge/Twitter-1DA1F2?logo=twitter&logoColor=white)](https://twitter.com/bezz) [![github](https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white)](https://github.com/alexberriman/) [![youtube](https://res.cloudinary.com/practicaldev/image/fetch/s--cumRvkw3--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://img.shields.io/badge/YouTube-FF0000%3Flogo%3Dyoutube%26logoColor%3Dwhite)](https://www.youtube.com/channel/UCji7mkyJ6T5X_D9qlWlPczw) [![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alex-berriman/)
+
+</div>
+
 <p align="center">
   <a href="#why">Why?</a> •
   <a href="#key-features">Key Features</a> •
   <a href="#installation">Installation</a> •
-  <a href="#docs">Docs</a> •
+  <a href="#api">API</a> •
   <a href="#example">Example</a> •
   <a href="#compatibility">Compatibility</a> •
   <a href="#see-also">See Also</a> •
@@ -53,9 +61,34 @@ By providing the means to convert a `json-rules-engine` condition to a `json-log
 $ npm install json-rules-engine-to-json-logic
 ```
 
-## Docs
+## API
 
-- [toJsonRule](./docs/to-json-rule.md)
+#### `toJsonRule(condition: TopLevelCondition): RulesLogic<AdditionalOperation>`
+
+Converts a `json-rules-engine` condition to a `json-logic` rule.
+
+```ts
+import { toJsonRule } from "json-rules-engine-to-json-logic";
+
+const jsonLogicRule = toJsonRule({
+  all: [
+    {
+      fact: "name",
+      operator: "equal",
+      value: "Harry Potter",
+    },
+  ],
+});
+
+// => { and: [{ "===": [{ var: "name" }, "Harry Potter"] }] };
+```
+
+#### CompatibilityError(message: string)
+
+Thrown on failed conversions when the `json-rules-engine` condition uses functionality that can't be converted. Contains the following properties:
+
+- `name`: "CompatibilityError"
+- `message`: a string, indicating what was incompatible.
 
 ## Example
 

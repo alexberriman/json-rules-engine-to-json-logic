@@ -95,7 +95,7 @@ function transformTopLevel(
 }
 
 export function toJsonRule(
-  input: TopLevelCondition
+  condition: TopLevelCondition
 ): RulesLogic<AdditionalOperation> {
-  return transformTopLevel(input);
+  return transformTopLevel(condition);
 }
