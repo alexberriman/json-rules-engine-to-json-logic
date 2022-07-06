@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/alexberriman/json-rules-engine-to-json-logic"><img src="./logo.svg" alt="json-rules-engine-to-json-logic" height="180"></a>
+  <a href="https://github.com/alexberriman/json-rules-engine-to-json-logic"><img src="https://raw.githubusercontent.com/alexberriman/json-rules-engine-to-json-logic/main/logo.svg" alt="json-rules-engine-to-json-logic" height="180"></a>
   <br><br>
   json-rules-engine-to-json-logic
   <br>
@@ -42,7 +42,7 @@ By providing the means to convert a `json-rules-engine` condition to a `json-log
 
 - **written in typescript**
 - **zero dependencies**
-- **minimal size:** `4kb` minified + zipped
+- **minimal size:** less than `1kb` minified + zipped
 - **works with plain JavaScript too** - you don't need to use TypeScript.
 - **small api:** only two functions you need to learn
 - **isomorphic:** works in Node.js and all modern browsers
