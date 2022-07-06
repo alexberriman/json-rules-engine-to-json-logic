@@ -1,6 +1,6 @@
 {
   "name": "json-rules-engine-to-json-logic",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A minimal Typescript library for converting a json-rules-engine condition to a JsonLogic rule specification.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
