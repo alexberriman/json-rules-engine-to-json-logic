@@ -1,9 +1,14 @@
-import type { NestedCondition, TopLevelCondition } from "json-rules-engine";
+import type {
+  ConditionProperties,
+  NestedCondition,
+  TopLevelCondition,
+} from "json-rules-engine";
 import type {
   AdditionalOperation,
   ReservedOperations,
   RulesLogic,
 } from "json-logic-js";
+import { jsonPathToDotNotation } from "./json-path-to-dot-notation";
 
 type JsonRulesEngineOperator =
   | "equal"
@@ -46,9 +51,12 @@ function isScalar(operator: JsonRulesEngineOperator) {
   ].includes(operator);
 }
 
-function jsonPathToDotNotation(input: string): string {
-  // @todo
-  return input;
+function toJsonPath({ fact, path }: ConditionProperties): string {
+  if (!path) {
+    return fact;
+  }
+
+  return `${fact}.${jsonPathToDotNotation(path)}`;
 }
 
 function isTopLevelCondition(
@@ -61,14 +69,13 @@ function transformNested(
   input: NestedCondition
 ): RulesLogic<AdditionalOperation> {
   if (isTopLevelCondition(input)) {
-    // @todo
-    return { "<": [{ var: "temp" }, 110] };
+    return transformTopLevel(input);
   }
 
   if (isScalar(input.operator as JsonRulesEngineOperator)) {
     return {
       [OperatorMapping[input.operator as JsonRulesEngineOperator]]: [
-        { var: jsonPathToDotNotation(input.fact) },
+        { var: toJsonPath(input) },
         input.value,
       ],
     };

@@ -6,6 +6,8 @@
   <br>
 </h1>
 
+> :warning: **This package is under active development**: Compatibility and APIs may change.
+
 <h4 align="center">A minimal Typescript library for converting a <a href="https://github.com/CacheControl/json-rules-engine" target="_blank">json-rules-engine</a> condition to a <a href="https://github.com/jwadhams/json-logic-js/">JsonLogic</a> rule specification (and vice versa).</h4>
 
 <p align="center">
@@ -13,12 +15,11 @@
   <a href="#key-features">Key Features</a> •
   <a href="#installation">Installation</a> •
   <a href="#docs">Docs</a> •
+  <a href="#compatibility">Compatibility</a> •
   <a href="#example">Example</a> •
   <a href="#see-also">See Also</a> •
   <a href="#license">License</a>
 </p>
-
-> :warning: **This package is under active development**: Compatibility and APIs may change.
 
 ## Why?
 
@@ -53,6 +54,12 @@ $ npm install json-rules-engine
 ## Docs
 
 - [transform](./docs/transform.md)
+
+## Compatibility
+
+Given that both libraries offer different functionality, it is impossible to 100% convert between one and the other. In the case where a conversion isn't possible, a `Compatibility` error will be thrown. Current incompatibilities include:
+
+- `json-rules-engine` uses [json-path](https://github.com/JSONPath-Plus/JSONPath) whereas `json-logic` uses dot notation. `json-path` is the more powerful of the two, and a lot of functionality doesn't port over.
 
 ## Example
 
