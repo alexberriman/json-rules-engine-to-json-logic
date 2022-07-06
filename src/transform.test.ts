@@ -360,6 +360,126 @@ test.each<[string, TopLevelCondition, Record<string, unknown>, boolean]>([
     { firstName: "harry", lastName: "potter", birthYear: 1980 },
     true,
   ],
+  // in (truthy)
+  [
+    "in (truthy)",
+    {
+      all: [
+        {
+          fact: "firstName",
+          operator: "in",
+          value: ["ron", "harry", "hermione"],
+        },
+      ],
+    },
+    { firstName: "harry" },
+    true,
+  ],
+  // in (falsy)
+  [
+    "in (falsy)",
+    {
+      all: [
+        {
+          fact: "firstName",
+          operator: "in",
+          value: ["ron", "hermione"],
+        },
+      ],
+    },
+    { firstName: "harry" },
+    false,
+  ],
+  // not in (truthy)
+  [
+    "not in (truthy)",
+    {
+      all: [
+        {
+          fact: "firstName",
+          operator: "notIn",
+          value: ["ron", "hermione"],
+        },
+      ],
+    },
+    { firstName: "harry" },
+    true,
+  ],
+  // not in (falsy)
+  [
+    "in (falsy)",
+    {
+      all: [
+        {
+          fact: "firstName",
+          operator: "notIn",
+          value: ["ron", "harry", "hermione"],
+        },
+      ],
+    },
+    { firstName: "harry" },
+    false,
+  ],
+  // contains (truthy)
+  [
+    "contains (truthy)",
+    {
+      all: [
+        {
+          fact: "wizards",
+          operator: "contains",
+          value: "harry potter",
+        },
+      ],
+    },
+    { wizards: ["harry potter", "hermione granger", "ron weasley"] },
+    true,
+  ],
+  // contains (falsy)
+  [
+    "contains (falsy)",
+    {
+      all: [
+        {
+          fact: "wizards",
+          operator: "contains",
+          value: "draco malfoy",
+        },
+      ],
+    },
+    { wizards: ["harry potter", "hermione granger", "ron weasley"] },
+    false,
+  ],
+  // doesNotContain (truthy)
+  [
+    "doesNotContain (truthy)",
+    {
+      all: [
+        {
+          fact: "wizards",
+          operator: "doesNotContain",
+          value: "draco malfoy",
+        },
+      ],
+    },
+    { wizards: ["harry potter", "hermione granger", "ron weasley"] },
+    true,
+  ],
+  // doesNotContain (falsy)
+  [
+    "doesNotContain (falsy)",
+    {
+      all: [
+        {
+          fact: "wizards",
+          operator: "doesNotContain",
+          value: "ron weasley",
+        },
+      ],
+    },
+    { wizards: ["harry potter", "hermione granger", "ron weasley"] },
+    false,
+  ],
 ])("%s", async (scenario, input, facts, expected) => {
   // fetch result from json-rules-logic
   const engine = new Engine();

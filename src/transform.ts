@@ -10,17 +10,19 @@ import type {
 } from "json-logic-js";
 import { jsonPathToDotNotation } from "./json-path-to-dot-notation";
 
-type JsonRulesEngineOperator =
+type JsonRulesScalarOperators =
   | "equal"
   | "notEqual"
   | "lessThan"
   | "lessThanInclusive"
   | "greaterThan"
-  | "greaterThanInclusive"
-  | "in"
-  | "notIn"
-  | "contains"
-  | "doesNotContain";
+  | "greaterThanInclusive";
+
+type JsonRulesArrayOperators = "in" | "notIn" | "contains" | "doesNotContain";
+
+type JsonRulesEngineOperator =
+  | JsonRulesScalarOperators
+  | JsonRulesArrayOperators;
 
 type JsonLogicOperator = ReservedOperations;
 
@@ -39,17 +41,6 @@ const OperatorMapping: Record<JsonRulesEngineOperator, JsonLogicOperator> = {
   contains: "in",
   doesNotContain: "in",
 };
-
-function isScalar(operator: JsonRulesEngineOperator) {
-  return [
-    "equal",
-    "notEqual",
-    "lessThan",
-    "lessThanInclusive",
-    "greaterThan",
-    "greaterThanInclusive",
-  ].includes(operator);
-}
 
 function toJsonPath({ fact, path }: ConditionProperties): string {
   if (!path) {
@@ -72,17 +63,25 @@ function transformNested(
     return transformTopLevel(input);
   }
 
-  if (isScalar(input.operator as JsonRulesEngineOperator)) {
+  const operator = input.operator as JsonRulesEngineOperator;
+  const rule = {
+    [OperatorMapping[operator]]: [{ var: toJsonPath(input) }, input.value],
+  };
+
+  if (operator === "notIn") {
+    return { "!": [rule] };
+  }
+
+  if (["contains", "doesNotContain"].includes(operator)) {
     return {
-      [OperatorMapping[input.operator as JsonRulesEngineOperator]]: [
+      [operator === "contains" ? "some" : "none"]: [
         { var: toJsonPath(input) },
-        input.value,
+        { [OperatorMapping.equal]: [{ var: "" }, input.value] },
       ],
     };
   }
 
-  // @todo
-  return { "=": [1, 1] };
+  return rule;
 }
 
 function transformTopLevel(
