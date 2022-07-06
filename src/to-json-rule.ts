@@ -94,7 +94,7 @@ function transformTopLevel(
   return { or: input.any.map(transformNested) };
 }
 
-export function transform(
+export function toJsonRule(
   input: TopLevelCondition
 ): RulesLogic<AdditionalOperation> {
   return transformTopLevel(input);

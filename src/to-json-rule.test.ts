@@ -1,6 +1,6 @@
 import { Engine, TopLevelCondition } from "json-rules-engine";
 import jsonLogic from "json-logic-js";
-import { transform } from "./transform";
+import { toJsonRule } from "./to-json-rule";
 
 test.each<[string, TopLevelCondition, Record<string, unknown>, boolean]>([
   [
@@ -493,7 +493,7 @@ test.each<[string, TopLevelCondition, Record<string, unknown>, boolean]>([
   const jsonRulesResult = result.results.length > 0;
 
   // convert to json logic rule and evaluate
-  const jsonLogicRule = transform(input);
+  const jsonLogicRule = toJsonRule(input);
   const jsonLogicResult = jsonLogic.apply(jsonLogicRule, facts);
 
   expect(jsonLogicResult).toEqual(jsonRulesResult);

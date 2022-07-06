@@ -1,1 +1,1 @@
-export * from "./transform";
+export * from "./to-json-rule";
