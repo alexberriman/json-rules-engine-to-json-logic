@@ -10,6 +10,10 @@ import type {
 } from "json-logic-js";
 import { jsonPathToDotNotation } from "./json-path-to-dot-notation";
 
+export type JsonRulesEngineCondition = TopLevelCondition;
+
+export type JsonLogicRule = RulesLogic<AdditionalOperation>;
+
 type JsonRulesScalarOperators =
   | "equal"
   | "notEqual"
@@ -27,19 +31,16 @@ type JsonRulesEngineOperator =
 type JsonLogicOperator = ReservedOperations;
 
 const OperatorMapping: Record<JsonRulesEngineOperator, JsonLogicOperator> = {
-  // string and numeric
   equal: "===",
   notEqual: "!==",
-  // numeric
   lessThan: "<",
   lessThanInclusive: "<=",
   greaterThan: ">",
   greaterThanInclusive: ">=",
-  // array
   in: "in",
   notIn: "in",
-  contains: "in",
-  doesNotContain: "in",
+  contains: "some",
+  doesNotContain: "none",
 };
 
 function toJsonPath({ fact, path }: ConditionProperties): string {
@@ -94,8 +95,6 @@ function transformTopLevel(
   return { or: input.any.map(transformNested) };
 }
 
-export function toJsonRule(
-  condition: TopLevelCondition
-): RulesLogic<AdditionalOperation> {
+export function toJsonRule(condition: JsonRulesEngineCondition): JsonLogicRule {
   return transformTopLevel(condition);
 }

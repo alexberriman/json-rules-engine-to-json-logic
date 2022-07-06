@@ -63,7 +63,7 @@ $ npm install json-rules-engine-to-json-logic
 
 ## API
 
-#### `toJsonRule(condition: TopLevelCondition): RulesLogic<AdditionalOperation>`
+#### `toJsonRule(condition: JsonRulesEngineCondition): JsonLogicRule`
 
 Converts a `json-rules-engine` condition to a `json-logic` rule.
 
