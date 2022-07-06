@@ -95,7 +95,7 @@ const jsonLogicResult = jsonLogic.apply(jsonLogicRule, facts);
 console.assert(jsonLogicResult === jsonRulesResult);
 ```
 
-This is available in the [examples](./examples/01-basic-example.ts)
+This is available in the [examples](https://github.com/alexberriman/json-rules-engine-to-json-logic/blob/main/examples/01-basic-example.ts)
 
 ## Compatibility
 

@@ -1,9 +1,11 @@
 {
   "name": "json-rules-engine-to-json-logic",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A minimal Typescript library for converting a json-rules-engine condition to a JsonLogic rule specification.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.build.json",
     "ci": "concurrently \"npm:lint\" \"npm:test\"",
     "lint": "eslint src/",
     "prepare": "husky install",
