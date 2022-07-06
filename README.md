@@ -83,7 +83,7 @@ const jsonLogicRule = toJsonRule({
 // => { and: [{ "===": [{ var: "name" }, "Harry Potter"] }] };
 ```
 
-#### CompatibilityError(message: string)
+#### `CompatibilityError(message: string)`
 
 Thrown on failed conversions when the `json-rules-engine` condition uses functionality that can't be converted. Contains the following properties:
 
